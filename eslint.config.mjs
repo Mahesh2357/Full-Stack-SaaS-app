@@ -5,12 +5,22 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+// Removed unused 'compat' variable assignment
 
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-];
+const eslintConfig = {
+  extends: [
+    'next/core-web-vitals',
+    'next',
+    'prettier'
+  ],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'react/no-escape-entities': 'off'
+  }
+};
+
+module.exports = eslintConfig;
+
 
 export default eslintConfig;
